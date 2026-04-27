@@ -31,7 +31,7 @@
 
     led_strip: SK6812 {
         compatible = "worldsemi,ws2812-gpio";
-        gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        in-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
         chain-length = <21>;
     };
 
