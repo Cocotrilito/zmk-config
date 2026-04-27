@@ -4,6 +4,7 @@
 / {
     chosen {
         zmk,physical-layout = &default_layout;
+        zmk,underglow = &led_strip;
     };
 
     kscan: kscan {
@@ -12,14 +13,28 @@
         wakeup-source;
 
         row-gpios
-            = <&xiao_d 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&xiao_d 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&xiao_d 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             ;
     };
     
+    
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        io-channels = <&adc 0>;
+        output-ohms = <806000>;
+        full-ohms = <(2000000 + 806000)>;
+    };
+
+    led_strip: SK6812 {
+        compatible = "worldsemi,ws2812-gpio";
+        gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        chain-length = <21>;
+    };
+
     default_transform: default_transform {
         compatible = "zmk,matrix-transform";
         columns = <10>;
