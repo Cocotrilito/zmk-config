@@ -1,0 +1,16 @@
+if SHIELD_DSPLIT_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "DSplit"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_DSPLIT_LEFT
+
+if SHIELD_DSPLIT_LEFT || SHIELD_DSPLIT_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif # SHIELD_DSPLIT_LEFT || SHIELD_DSPLIT_RIGHT
