@@ -1,5 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include "dsplit-layouts.dtsi"
+#include <dt-bindings/led/led.h>
 
 / {
     chosen {
@@ -30,9 +31,12 @@
     };
 
     led_strip: SK6812 {
-        compatible = "worldsemi,ws2812-gpio";
-        in-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
-        chain-length = <21>;
+    compatible = "worldsemi,ws2812-gpio";
+    in-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+    chain-length = <21>;
+    color-mapping = <LED_COLOR_ID_GREEN
+                     LED_COLOR_ID_RED
+                     LED_COLOR_ID_BLUE>;
     };
 
     default_transform: default_transform {
