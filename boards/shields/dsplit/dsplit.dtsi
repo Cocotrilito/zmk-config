@@ -14,11 +14,11 @@
         wakeup-source;
 
         row-gpios
-            = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            = <&xiao_d 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&xiao_d 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&gpio1 12  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&gpio1 11  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             ;
     };
     
@@ -31,12 +31,12 @@
     };
 
     led_strip: SK6812 {
-    compatible = "worldsemi,ws2812-gpio";
-    in-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
-    chain-length = <21>;
-    color-mapping = <LED_COLOR_ID_GREEN
-                     LED_COLOR_ID_RED
-                     LED_COLOR_ID_BLUE>;
+        compatible = "worldsemi,ws2812-gpio";
+        in-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        chain-length = <22>;  /* Aumentado para evitar que el último LED quede apagado */
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
     };
 
     default_transform: default_transform {
